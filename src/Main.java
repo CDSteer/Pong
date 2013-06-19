@@ -42,7 +42,7 @@ public class Main {
         shapes.add(new Box(100, 150));
 
         glMatrixMode(GL_PROJECTION);
-        glOrtho(0, 640, 480, 0, 1, -1);
+        glOrtho(0, FRAME_WIDTH*SCALE, FRAME_HEIGHT*SCALE, 0, 1, -1);
         glMatrixMode(GL_MODELVIEW);
 
 
@@ -74,12 +74,12 @@ public class Main {
             */
 
             for (Box box : shapes){
-                if (Mouse.isButtonDown(0) && box.isInBounds(Mouse.getX(), 480 - Mouse.getY()) && !somethingIsSelected) {
+                if (Mouse.isButtonDown(0) && box.isInBounds(Mouse.getX(), FRAME_HEIGHT*SCALE - Mouse.getY()) && !somethingIsSelected) {
                     System.out.println("boo");
                     somethingIsSelected = true;
                     box.selected = true;
                 }
-                if (Mouse.isButtonDown(0) && box.isInBounds(Mouse.getX(), 480 - Mouse.getY()) && !somethingIsSelected) {
+                if (Mouse.isButtonDown(0) && box.isInBounds(Mouse.getX(), FRAME_HEIGHT*SCALE - Mouse.getY()) && !somethingIsSelected) {
                     if ((System.currentTimeMillis() - lastColourChange) >= 200 /* milliseconds */) {
                         box.randomiseColors();
                         lastColourChange = System.currentTimeMillis();

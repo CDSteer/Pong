@@ -22,10 +22,14 @@ public class Main {
     private static boolean somethingIsSelected = false;
     private static long lastColourChange;
 
+    private static final int FRAME_WIDTH = 400;
+    private static final int FRAME_HEIGHT = FRAME_WIDTH / 16 * 9;
+    private static final int SCALE = 3;
+
     public static void main(String[] args){
 
         try {
-            Display.setDisplayMode(new DisplayMode(640, 480));
+            Display.setDisplayMode(new DisplayMode(FRAME_WIDTH*SCALE, FRAME_HEIGHT*SCALE));
             Display.setTitle("Hello World");
             Display.create();
         } catch (LWJGLException e) {
@@ -75,7 +79,7 @@ public class Main {
                     somethingIsSelected = true;
                     box.selected = true;
                 }
-                if (Mouse.isButtonDown(2) && box.isInBounds(Mouse.getX(), 480 - Mouse.getY()) && !somethingIsSelected) {
+                if (Mouse.isButtonDown(0) && box.isInBounds(Mouse.getX(), 480 - Mouse.getY()) && !somethingIsSelected) {
                     if ((System.currentTimeMillis() - lastColourChange) >= 200 /* milliseconds */) {
                         box.randomiseColors();
                         lastColourChange = System.currentTimeMillis();
